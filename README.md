@@ -33,8 +33,7 @@ struct block_info {
 - Allocation requests are fulfilled by a first-fit policy. If the block found is larger and the remaining area would be big enough
   to hold a free block, the block is split and the remaining area is reinserted into the free list while its order is maintained.
 - When a block is freed, its upper neighbouring block is checked whether it's free (and hence part of the free list).
-  if it is, both blocks are merged.
+  If it is, both blocks are merged.
 - If it is not, the remaining blocks are traversed until a free block (or the ending sentinel) is found.
 - Once it is known where to insert the block into the free list, the previous block is checked.
 - If it's adjacent to our current free block they are merged.
-
