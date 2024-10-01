@@ -52,19 +52,19 @@ struct block_info {
         <td> 64 </td>
     </tr>
     <tr>
-        <th> Alignment (bytes) </th>
+        <th align="right"> Alignment (bytes) </th>
         <td> 2 </td>
         <td> 4 </td>
         <td> 8 </td>
     </tr>
     <tr>
-        <th> Allocated block overhead (bytes) </th>
+        <th align="right"> Allocated block overhead (bytes) </th>
         <td> 2 </td>
         <td> 4 </td>
         <td> 8 </td>
     </tr>
     <tr>
-        <th> Minimal allocation size (bytes) </th>
+        <th align="right"> Minimal allocation size (bytes) </th>
         <td> 4 </td>
         <td> 8 </td>
         <td> 16 </td>
