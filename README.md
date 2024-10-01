@@ -2,7 +2,7 @@
 
 ## Dynamic Memory Allocation for Small Memory Systems
 
-*zmalloc* is a dynamic memory allocation library for systems with a
+*zmalloc* is a dynamic memory allocation implementation for systems with a
 relatively small amount of memory,
 mostly bare-metal, single process systems, like old micro computers
 or embedded systems, with a known fixed amount of memory which you
