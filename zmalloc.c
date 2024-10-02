@@ -84,7 +84,7 @@ void *zmalloc(size_t size) {
         return NULL;
     }
 
-    size = (uintptr_t) align_up((void *)size, sizeof(uintptr_t));
+    size = (size_t) align_up((void *)size, sizeof(uintptr_t));
 
     if (size < 2 * sizeof(uintptr_t))
         size = 2 * sizeof(uintptr_t);
@@ -183,6 +183,10 @@ void *zrealloc(void *ptr, size_t size) {
         zfree(ptr);
         return NULL;
     }
+
+    size = (size_t) align_up((void *)size, sizeof(uintptr_t));
+    if (size < 2 * sizeof(uintptr_t))
+        size = 2 * sizeof(uintptr_t);
 
     struct block_info *p = ptr - sizeof(uintptr_t);
 
