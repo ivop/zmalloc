@@ -73,8 +73,6 @@ struct block_info {
 
 ## Further reading
 
-See also:
-Dynamic Storage Allocation: A Survey and Critical Review
+* [Dynamic Storage Allocation: A Survey and Critical Review](https://users.cs.northwestern.edu/~pdinda/ics-s05/doc/dsa.pdf)
 by Paul R. Wilson, Mark S. Johnstone, Michael Neely, and David Boles
-International Workshop on Memory Management, September 1995  
-ftp://ftp.cs.utexas.edu/pub/garbage/allocsrv.ps
+International Workshop on Memory Management, September 1995
