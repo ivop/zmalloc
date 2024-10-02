@@ -105,6 +105,8 @@ int main(int argc, char **argv) {
     print_memory();
     foo = zrealloc(foo, 31);
     print_memory();
+    foo = zrealloc(foo,23);
+    print_memory();
     zfree(foo);
 
     return 0;

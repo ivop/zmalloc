@@ -196,11 +196,22 @@ void *zrealloc(void *ptr, size_t size) {
         memcpy(q, ptr, get_size(p->size));
         zfree(ptr);
         return q;
-    } else if (get_size(p->size) > size + minfreeblocksize) {   // split
-        struct block_info *q = (void *) p + sizeof(uintptr_t) + size;
-        q->size = get_size(p->size) - size - sizeof(uintptr_t);
-        link_to_free_list(q);
-        p->size = set_inuse(size);
+    } else if (size < get_size(p->size)) {
+        struct block_info *q = (void *) p + sizeof(uintptr_t) + get_size(p->size);
+        if (is_free(q->size)) {     // add to next if free
+            struct block_info *t = (void *) p + sizeof(uintptr_t) + size;
+            t->size = q->size + (get_size(p->size) - size);
+            t->prev = q->prev;  // order matters, because we might overwrite
+            t->next = q->next;  // in case the reduction is only one unit
+            t->prev->next = t;
+            t->next->prev = t;
+            p->size = set_inuse(size);
+        } else if (get_size(p->size) > size + minfreeblocksize) { // split
+            struct block_info *q = (void *) p + sizeof(uintptr_t) + size;
+            q->size = get_size(p->size) - size - sizeof(uintptr_t);
+            link_to_free_list(q);
+            p->size = set_inuse(size);
+        }
     }
     return ptr;
 }
