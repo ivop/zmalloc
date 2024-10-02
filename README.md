@@ -2,7 +2,7 @@
 
 ## Dynamic Memory Allocation for Small Memory Systems
 
-*zmalloc* is a dynamic memory allocation library for systems with a
+*zmalloc* is a dynamic memory allocation implementation for systems with a
 relatively small amount of memory,
 mostly bare-metal, single process systems, like old micro computers
 or embedded systems, with a known fixed amount of memory which you
@@ -36,4 +36,37 @@ struct block_info {
   If it is, both blocks are merged.
 - If it is not, the remaining blocks are traversed until a free block (or the ending sentinel) is found.
 - Once it is known where to insert the block into the free list, the previous block is checked.
-- If it's adjacent to our current free block they are merged.
+  If it's adjacent to our current free block they are merged.
+
+## Numbers
+
+<table>
+    <tr>
+        <th></th>
+        <th colspan="3"> Pointer size (bits) </th>
+    </tr>
+    <tr>
+        <td></td>
+        <td> 16 </td>
+        <td> 32 </td>
+        <td> 64 </td>
+    </tr>
+    <tr>
+        <th align="right"> Alignment (bytes) </th>
+        <td> 2 </td>
+        <td> 4 </td>
+        <td> 8 </td>
+    </tr>
+    <tr>
+        <th align="right"> Allocated block overhead (bytes) </th>
+        <td> 2 </td>
+        <td> 4 </td>
+        <td> 8 </td>
+    </tr>
+    <tr>
+        <th align="right"> Minimal allocation size (bytes) </th>
+        <td> 4 </td>
+        <td> 8 </td>
+        <td> 16 </td>
+    </tr>
+</table>
