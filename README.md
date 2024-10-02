@@ -70,3 +70,11 @@ struct block_info {
         <td> 16 </td>
     </tr>
 </table>
+
+## Further reading
+
+See also:
+Dynamic Storage Allocation: A Survey and Critical Review
+by Paul R. Wilson, Mark S. Johnstone, Michael Neely, and David Boles
+International Workshop on Memory Management, September 1995  
+ftp://ftp.cs.utexas.edu/pub/garbage/allocsrv.ps
