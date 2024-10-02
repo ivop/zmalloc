@@ -101,5 +101,11 @@ int main(int argc, char **argv) {
     zfree(foo);
     print_memory();
 
+    foo = zmalloc(64);
+    print_memory();
+    foo = zrealloc(foo, 31);
+    print_memory();
+    zfree(foo);
+
     return 0;
 }
