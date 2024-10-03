@@ -28,8 +28,8 @@ struct block_info {
 - Size field uses bit 0 to indicate free (0) or in use (1).
 - The free list is enclosed by two sentinels which are always part of free_list but will never be allocated
   because their size is set to zero. This avoids several pointer checks, and results in faster code.
-- All blocks (used and free) can always be traversed, starting from the base of the memory pool, going in forward direction,
-  by continuously adding the block size and the size of the size field.
+- All blocks between the sentinels (used and free) can always be traversed, starting from the base of the memory pool, going in forward direction,
+  by continuously adding the block size.
 - Allocation requests are fulfilled by a first-fit policy. If the block found is larger and the remaining area would be big enough
   to hold a free block, the block is split and the remaining area is reinserted into the free list while its order is maintained.
 - When a block is freed, its upper neighbouring block is checked whether it's free (and hence part of the free list).
