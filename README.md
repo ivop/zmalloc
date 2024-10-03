@@ -37,6 +37,8 @@ struct block_info {
 - If it is not, the remaining blocks are traversed until a free block (or the ending sentinel) is found.
 - Once it is known where to insert the block into the free list, the previous block is checked.
   If it's adjacent to our current free block they are merged.
+- On realloc() with a smaller size, the remainder is merged with the next block if it's free. If it's not free, the remainder
+  is only added to the free list if it's of sufficient size to hold a new free block. Otherwise nothing is changed.
 
 ## Numbers
 
@@ -73,8 +75,6 @@ struct block_info {
 
 ## Further reading
 
-See also:
-Dynamic Storage Allocation: A Survey and Critical Review
+* [Dynamic Storage Allocation: A Survey and Critical Review](https://users.cs.northwestern.edu/~pdinda/ics-s05/doc/dsa.pdf)
 by Paul R. Wilson, Mark S. Johnstone, Michael Neely, and David Boles
-International Workshop on Memory Management, September 1995  
-ftp://ftp.cs.utexas.edu/pub/garbage/allocsrv.ps
+International Workshop on Memory Management, September 1995
