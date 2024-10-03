@@ -37,8 +37,8 @@ struct block_info {
 - If it is not, the remaining blocks are traversed until a free block (or the ending sentinel) is found.
 - Once it is known where to insert the block into the free list, the previous block is checked.
   If it's adjacent to our current free block they are merged.
-- On realloc() with a smaller size, the remainder is merged with the next block if it's free. If it's not free, the remainder
-  is only added to the free list if it's of sufficient size to hold a new free block. Otherwise nothing is changed.
+- On realloc() with a smaller size, if the remainder is of sufficient size to hold a new
+  free block, the block is split and added to the free list, possibly coalescing with the next free block.
 
 ## Numbers
 
